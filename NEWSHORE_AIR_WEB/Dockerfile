@@ -7,18 +7,18 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["NEWSHORE_AIR_WEB/NEWSHORE_AIR_API.csproj", "NEWSHORE_AIR_WEB/"]
+COPY ["NEWSHORE_AIR_WEB/NEWSHORE_AIR_WEB.csproj", "NEWSHORE_AIR_WEB/"]
 COPY ["NEWSHORE_AIR_BUSINESS/NEWSHORE_AIR_BUSINESS.csproj", "NEWSHORE_AIR_BUSINESS/"]
 COPY ["NEWSHORE_AIR_DATAACCESS/NEWSHORE_AIR_DATAACCESS.csproj", "NEWSHORE_AIR_DATAACCESS/"]
 RUN dotnet restore "NEWSHORE_AIR_WEB/NEWSHORE_AIR_API.csproj"
 COPY . .
 WORKDIR "/src/NEWSHORE_AIR_WEB"
-RUN dotnet build "NEWSHORE_AIR_API.csproj" -c Release -o /app/build
+RUN dotnet build "NEWSHORE_AIR_WEB.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "NEWSHORE_AIR_API.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "NEWSHORE_AIR_WEB.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "NEWSHORE_AIR_API.dll"]
+ENTRYPOINT ["dotnet", "NEWSHORE_AIR_WEB.dll"]
