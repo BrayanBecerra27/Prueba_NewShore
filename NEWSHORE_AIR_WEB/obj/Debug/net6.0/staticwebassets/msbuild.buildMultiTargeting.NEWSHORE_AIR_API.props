@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\NEWSHORE_AIR_API.props" />
+</Project>

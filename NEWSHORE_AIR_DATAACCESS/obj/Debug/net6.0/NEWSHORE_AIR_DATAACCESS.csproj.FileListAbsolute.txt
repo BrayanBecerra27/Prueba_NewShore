@@ -1,0 +1,12 @@
+C:\Users\SoporteIT\source\repos\NEWSHORE_AIR_WEB\NEWSHORE_AIR_DATAACCESS\bin\Debug\net6.0\NEWSHORE_AIR_DATAACCESS.deps.json
+C:\Users\SoporteIT\source\repos\NEWSHORE_AIR_WEB\NEWSHORE_AIR_DATAACCESS\bin\Debug\net6.0\NEWSHORE_AIR_DATAACCESS.dll
+C:\Users\SoporteIT\source\repos\NEWSHORE_AIR_WEB\NEWSHORE_AIR_DATAACCESS\bin\Debug\net6.0\NEWSHORE_AIR_DATAACCESS.pdb
+C:\Users\SoporteIT\source\repos\NEWSHORE_AIR_WEB\NEWSHORE_AIR_DATAACCESS\obj\Debug\net6.0\NEWSHORE_AIR_DATAACCESS.csproj.AssemblyReference.cache
+C:\Users\SoporteIT\source\repos\NEWSHORE_AIR_WEB\NEWSHORE_AIR_DATAACCESS\obj\Debug\net6.0\NEWSHORE_AIR_DATAACCESS.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\SoporteIT\source\repos\NEWSHORE_AIR_WEB\NEWSHORE_AIR_DATAACCESS\obj\Debug\net6.0\NEWSHORE_AIR_DATAACCESS.AssemblyInfoInputs.cache
+C:\Users\SoporteIT\source\repos\NEWSHORE_AIR_WEB\NEWSHORE_AIR_DATAACCESS\obj\Debug\net6.0\NEWSHORE_AIR_DATAACCESS.AssemblyInfo.cs
+C:\Users\SoporteIT\source\repos\NEWSHORE_AIR_WEB\NEWSHORE_AIR_DATAACCESS\obj\Debug\net6.0\NEWSHORE_AIR_DATAACCESS.csproj.CoreCompileInputs.cache
+C:\Users\SoporteIT\source\repos\NEWSHORE_AIR_WEB\NEWSHORE_AIR_DATAACCESS\obj\Debug\net6.0\NEWSHORE_AIR_DATAACCESS.dll
+C:\Users\SoporteIT\source\repos\NEWSHORE_AIR_WEB\NEWSHORE_AIR_DATAACCESS\obj\Debug\net6.0\refint\NEWSHORE_AIR_DATAACCESS.dll
+C:\Users\SoporteIT\source\repos\NEWSHORE_AIR_WEB\NEWSHORE_AIR_DATAACCESS\obj\Debug\net6.0\NEWSHORE_AIR_DATAACCESS.pdb
+C:\Users\SoporteIT\source\repos\NEWSHORE_AIR_WEB\NEWSHORE_AIR_DATAACCESS\obj\Debug\net6.0\ref\NEWSHORE_AIR_DATAACCESS.dll
