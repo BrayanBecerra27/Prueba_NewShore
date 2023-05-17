@@ -685,7 +685,6 @@
         "dependencies": {
           "AutoMapper": "10.1.1",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
-          "NEWSHORE_AIR_DATAACCESS": "1.0.0",
           "Newtonsoft.Json": "13.0.3"
         },
         "compile": {
@@ -698,6 +697,12 @@
       "NEWSHORE_AIR_DATAACCESS/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "AutoMapper": "10.1.1",
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
+          "NEWSHORE_AIR_BUSINESS": "1.0.0",
+          "Newtonsoft.Json": "13.0.3"
+        },
         "compile": {
           "bin/placeholder/NEWSHORE_AIR_DATAACCESS.dll": {}
         },

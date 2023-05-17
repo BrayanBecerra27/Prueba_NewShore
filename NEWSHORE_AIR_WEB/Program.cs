@@ -1,5 +1,6 @@
-using NEWSHORE_AIR_BUSINESS.Implementation;
+
 using NEWSHORE_AIR_BUSINESS.Interface;
+using NEWSHORE_AIR_DATAACCESS.Implementation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,7 @@ builder.Services.AddSwaggerGen();
 
 //Injection
 builder.Services.AddScoped<IQueryRoute, QueryRoute>();
+builder.Services.AddScoped<IFlightService, FlightService>();
 //AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

@@ -1,5 +1,5 @@
 ﻿using NEWSHORE_AIR_BUSINESS.Models;
-using NEWSHORE_AIR_DATAACCESS.Entity;
+using NEWSHORE_AIR_BUSINESS.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;

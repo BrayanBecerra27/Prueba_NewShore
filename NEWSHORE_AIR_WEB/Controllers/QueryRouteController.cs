@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using NEWSHORE_AIR_BUSINESS.Interface;
 using NEWSHORE_AIR_BUSINESS.Models;
-using NEWSHORE_AIR_DATAACCESS.Entity;
+using NEWSHORE_AIR_BUSINESS.Entity;
 
 namespace NEWSHORE_AIR_WEB.Controllers
 {

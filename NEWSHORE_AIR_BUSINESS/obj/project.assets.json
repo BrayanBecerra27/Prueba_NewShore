@@ -106,16 +106,6 @@
         "runtime": {
           "lib/netcoreapp2.0/_._": {}
         }
-      },
-      "NEWSHORE_AIR_DATAACCESS/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "compile": {
-          "bin/placeholder/NEWSHORE_AIR_DATAACCESS.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/NEWSHORE_AIR_DATAACCESS.dll": {}
-        }
       }
     }
   },
@@ -344,18 +334,12 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
-    },
-    "NEWSHORE_AIR_DATAACCESS/1.0.0": {
-      "type": "project",
-      "path": "../NEWSHORE_AIR_DATAACCESS/NEWSHORE_AIR_DATAACCESS.csproj",
-      "msbuildProject": "../NEWSHORE_AIR_DATAACCESS/NEWSHORE_AIR_DATAACCESS.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "AutoMapper >= 10.1.1",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 8.1.1",
-      "NEWSHORE_AIR_DATAACCESS >= 1.0.0",
       "Newtonsoft.Json >= 13.0.3"
     ]
   },
@@ -389,11 +373,7 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {
-            "C:\\Users\\SoporteIT\\source\\repos\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_DATAACCESS\\NEWSHORE_AIR_DATAACCESS.csproj": {
-              "projectPath": "C:\\Users\\SoporteIT\\source\\repos\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_DATAACCESS\\NEWSHORE_AIR_DATAACCESS.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {

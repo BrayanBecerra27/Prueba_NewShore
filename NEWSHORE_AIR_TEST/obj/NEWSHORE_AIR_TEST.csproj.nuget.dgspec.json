@@ -30,11 +30,7 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {
-              "C:\\Users\\SoporteIT\\source\\repos\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_DATAACCESS\\NEWSHORE_AIR_DATAACCESS.csproj": {
-                "projectPath": "C:\\Users\\SoporteIT\\source\\repos\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_DATAACCESS\\NEWSHORE_AIR_DATAACCESS.csproj"
-              }
-            }
+            "projectReferences": {}
           }
         },
         "warningProperties": {
@@ -106,7 +102,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\SoporteIT\\source\\repos\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_BUSINESS\\NEWSHORE_AIR_BUSINESS.csproj": {
+                "projectPath": "C:\\Users\\SoporteIT\\source\\repos\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_BUSINESS\\NEWSHORE_AIR_BUSINESS.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -118,6 +118,20 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[10.1.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.1.1, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

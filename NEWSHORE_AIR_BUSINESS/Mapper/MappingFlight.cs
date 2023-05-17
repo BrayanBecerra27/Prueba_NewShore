@@ -1,4 +1,4 @@
-﻿using NEWSHORE_AIR_DATAACCESS.Entity;
+﻿using NEWSHORE_AIR_BUSINESS.Entity;
 using AutoMapper;
 using NEWSHORE_AIR_BUSINESS.Models;
 

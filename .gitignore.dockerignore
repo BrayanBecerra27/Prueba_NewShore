@@ -1,0 +1,57 @@
+# .NET
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# NuGet
+*.nuget.props
+*.nuget.targets
+
+# Build Results
+[Dd]ebug/
+[Rr]elease/
+_ReSharper.*
+
+# Visual Studio Code
+.vscode/
+
+# Test Results
+[Tt]est[Rr]esult*/
+*.testsettings
+*.coverage
+*.json
+
+# Build and Package Files
+*.msi
+*.msix
+*.msm
+*.msp
+*.msixbundle
+*.exe
+*.dll
+*.pdb
+*.zip
+*.gz
+*.tar.gz
+*.rar
+
+# Logs and Dumps
+*.log
+*.txt
+*.vsix
+*.mdmp
+*.core
+
+# Misc
+Icon?
+*.cache
+*.bak
+*.tmp
+*.pidb
+*.userprefs

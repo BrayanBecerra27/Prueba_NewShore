@@ -1,14 +1,11 @@
 C:\Users\SoporteIT\source\repos\NEWSHORE_AIR_WEB\NEWSHORE_AIR_BUSINESS\bin\Debug\net6.0\NEWSHORE_AIR_BUSINESS.deps.json
 C:\Users\SoporteIT\source\repos\NEWSHORE_AIR_WEB\NEWSHORE_AIR_BUSINESS\bin\Debug\net6.0\NEWSHORE_AIR_BUSINESS.dll
 C:\Users\SoporteIT\source\repos\NEWSHORE_AIR_WEB\NEWSHORE_AIR_BUSINESS\bin\Debug\net6.0\NEWSHORE_AIR_BUSINESS.pdb
-C:\Users\SoporteIT\source\repos\NEWSHORE_AIR_WEB\NEWSHORE_AIR_BUSINESS\bin\Debug\net6.0\NEWSHORE_AIR_DATAACCESS.dll
-C:\Users\SoporteIT\source\repos\NEWSHORE_AIR_WEB\NEWSHORE_AIR_BUSINESS\bin\Debug\net6.0\NEWSHORE_AIR_DATAACCESS.pdb
 C:\Users\SoporteIT\source\repos\NEWSHORE_AIR_WEB\NEWSHORE_AIR_BUSINESS\obj\Debug\net6.0\NEWSHORE_AIR_BUSINESS.csproj.AssemblyReference.cache
 C:\Users\SoporteIT\source\repos\NEWSHORE_AIR_WEB\NEWSHORE_AIR_BUSINESS\obj\Debug\net6.0\NEWSHORE_AIR_BUSINESS.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\SoporteIT\source\repos\NEWSHORE_AIR_WEB\NEWSHORE_AIR_BUSINESS\obj\Debug\net6.0\NEWSHORE_AIR_BUSINESS.AssemblyInfoInputs.cache
 C:\Users\SoporteIT\source\repos\NEWSHORE_AIR_WEB\NEWSHORE_AIR_BUSINESS\obj\Debug\net6.0\NEWSHORE_AIR_BUSINESS.AssemblyInfo.cs
 C:\Users\SoporteIT\source\repos\NEWSHORE_AIR_WEB\NEWSHORE_AIR_BUSINESS\obj\Debug\net6.0\NEWSHORE_AIR_BUSINESS.csproj.CoreCompileInputs.cache
-C:\Users\SoporteIT\source\repos\NEWSHORE_AIR_WEB\NEWSHORE_AIR_BUSINESS\obj\Debug\net6.0\NEWSHORE_AIR_BUSINESS.csproj.CopyComplete
 C:\Users\SoporteIT\source\repos\NEWSHORE_AIR_WEB\NEWSHORE_AIR_BUSINESS\obj\Debug\net6.0\NEWSHORE_AIR_BUSINESS.dll
 C:\Users\SoporteIT\source\repos\NEWSHORE_AIR_WEB\NEWSHORE_AIR_BUSINESS\obj\Debug\net6.0\refint\NEWSHORE_AIR_BUSINESS.dll
 C:\Users\SoporteIT\source\repos\NEWSHORE_AIR_WEB\NEWSHORE_AIR_BUSINESS\obj\Debug\net6.0\NEWSHORE_AIR_BUSINESS.pdb

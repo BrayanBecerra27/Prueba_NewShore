@@ -12,8 +12,4 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\NEWSHORE_AIR_DATAACCESS\NEWSHORE_AIR_DATAACCESS.csproj" />
-  </ItemGroup>
-
 </Project>
