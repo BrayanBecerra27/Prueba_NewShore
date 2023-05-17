@@ -19,11 +19,11 @@ jobs:
         with:
           dotnet-version: '5.0.x'  
       - name: Install dependencies
-        run: dotnet restore NEWSHORE_AIR_WEB/NEWSHORE_AIR_WEB.csproj
+        run: dotnet restore NEWSHORE_AIR_WEB.csproj
       - name: Build
-        run: dotnet build NEWSHORE_AIR_WEB/NEWSHORE_AIR_WEB.csproj --configuration Release --no-restore
+        run: dotnet build NEWSHORE_AIR_WEB.csproj --configuration Release --no-restore
       - name: Test
-        run: dotnet test NEWSHORE_AIR_TEST/NEWSHORE_AIR_TEST.csproj --no-restore
+        run: dotnet test NEWSHORE_AIR_TEST.csproj --no-restore
       
       
       - name: Checkout repo
