@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: dotnet restore NEWSHORE_AIR_WEB/NEWSHORE_AIR_WEB.csproj
       - name: Build
-        run: dotnet build NEWSHORE_AIR_WEB/NEWSHORE_AIR_WEB.csproj --configuration Release
+        run: dotnet build NEWSHORE_AIR_WEB/NEWSHORE_AIR_WEB.csproj --configuration Release --no-restore
       - name: Test
         run: dotnet test NEWSHORE_AIR_TEST/NEWSHORE_AIR_TEST.csproj --no-restore
       

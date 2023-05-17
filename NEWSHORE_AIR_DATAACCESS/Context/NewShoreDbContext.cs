@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NEWSHORE_AIR_BUSINESS.Entity;
 
-namespace NEWSHORE_AIR_BUSINESS.Context
+namespace NEWSHORE_AIR_DATAACCESS.Context
 {
     public  class NewShoreDbContext : DbContext
     {
