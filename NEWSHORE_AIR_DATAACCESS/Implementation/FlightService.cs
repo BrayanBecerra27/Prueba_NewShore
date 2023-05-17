@@ -31,6 +31,7 @@ namespace NEWSHORE_AIR_DATAACCESS.Implementation
             }
         }
 
+
         private string MapRouteType(RouteType routeType)
         {
             string routeTypeInt = string.Empty;

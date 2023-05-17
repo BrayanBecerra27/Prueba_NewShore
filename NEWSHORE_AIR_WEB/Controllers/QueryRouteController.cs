@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using NEWSHORE_AIR_BUSINESS.Interface;
 using NEWSHORE_AIR_BUSINESS.Models;
 using NEWSHORE_AIR_BUSINESS.Entity;
+using System.Threading.Tasks;
+using NEWSHORE_AIR_API.ViewModel;
 
 namespace NEWSHORE_AIR_WEB.Controllers
 {
@@ -20,21 +22,31 @@ namespace NEWSHORE_AIR_WEB.Controllers
         }
 
         [HttpGet(Name = "GetRoute")]
+        [ProducesResponseType(typeof(ResponseBase<>), StatusCodes.Status200OK, contentType: "application/json")]
+        [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest, contentType: "application/json")]
+        [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status500InternalServerError, contentType: "application/json")]
         public async Task<IActionResult> Get([FromQuery] RouteRequest request)
         {
+
             try
             {
                 Journey response = await _iQueryRoute.GetRoute(request);
                 if (response.Flights.Count > 0)
-                    return Ok(response);
+                    return Ok(new ResponseBase<Journey>() { StatusCode = 200, Data = response });
                 else
-                    return Ok("Su consulta no puede ser procesada");
-                
+                    return Ok(new ResponseBase<string>() { StatusCode = 200, Data = "Su consulta no puede ser procesada" });
+            }
+            catch (MyCustomException ex)
+            {
+                // Manejar la excepción personalizada
+                return BadRequest(ex.Message);
             }
             catch (Exception ex)
             {
-                return BadRequest("Su consulta no puede ser procesada");
+                return BadRequest(new ResponseBase<string>() { StatusCode = 200, Data = "Su consulta no puede ser procesada" });
+                throw;
             }
+            
         }
     }
 }

@@ -8,7 +8,7 @@ using NEWSHORE_AIR_DATAACCESS.Implementation;
 using NEWSHORE_AIR_BUSINESS.Interface;
 using NUnit.Framework;
 
-namespace NEWSHORE_AIR_TEST.Tests.Businness
+namespace NEWSHORE_AIR_TEST.Tests.DataAccess
 {
     [TestFixture]
     public class QueryRouteTests

@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
+using NEWSHORE_AIR_API.ViewModel;
 using NEWSHORE_AIR_BUSINESS.Entity;
 using NEWSHORE_AIR_BUSINESS.Interface;
 using NEWSHORE_AIR_BUSINESS.Models;
@@ -25,12 +27,12 @@ namespace NEWSHORE_AIR_TEST.Tests.Controllers
         }
 
         [Test]
-        public async Task Get_ValidRequestWithFlights_ReturnsOkResult()
+        public async Task Get_ReturnsOkResultWithData_WhenResponseHasFlights()
         {
             // Arrange
-            var request = new RouteRequest() { Origin=string.Empty, Destination = string.Empty, RouteType = NEWSHORE_AIR_BUSINESS.Enumerator.RouteType.Unique};
-            var expectedResponse = new Journey(string.Empty,string.Empty,0, new List<Flight> { new Flight() }){};
-            _queryRouteMock.Setup(x => x.GetRoute(It.IsAny<RouteRequest>())).ReturnsAsync(expectedResponse);
+            var request = new RouteRequest();
+            var response = new Journey(string.Empty, string.Empty, 0, new List<Flight>() { new Flight()}) {  };
+            _queryRouteMock.Setup(x => x.GetRoute(It.IsAny<RouteRequest>())).ReturnsAsync(response);
 
             // Act
             var result = await _controller.Get(request);
@@ -38,17 +40,19 @@ namespace NEWSHORE_AIR_TEST.Tests.Controllers
             // Assert
             Assert.IsInstanceOf<OkObjectResult>(result);
             var okResult = result as OkObjectResult;
-            Assert.AreEqual(expectedResponse, okResult.Value);
+            Assert.AreEqual(StatusCodes.Status200OK, okResult.StatusCode);
+            Assert.IsInstanceOf<ResponseBase<Journey>>(okResult.Value);
+            var responseBase = okResult.Value as ResponseBase<Journey>;
+            Assert.AreEqual(response, responseBase.Data);
         }
 
         [Test]
-        public async Task Get_ValidRequestWithoutFlights_ReturnsOkResultWithMessage()
+        public async Task Get_ReturnsOkResultWithStringData_WhenResponseHasNoFlights()
         {
             // Arrange
             var request = new RouteRequest();
-            var expectedMessage = "Su consulta no puede ser procesada";
-            var expectedResponse = new Journey(string.Empty, string.Empty, 0, new List<Flight> { }){};
-            _queryRouteMock.Setup(x => x.GetRoute(It.IsAny<RouteRequest>())).ReturnsAsync(expectedResponse);
+            var response = new Journey(string.Empty , string.Empty, 0, new List<Flight>()) { };
+            _queryRouteMock.Setup(x => x.GetRoute(It.IsAny<RouteRequest>())).ReturnsAsync(response);
 
             // Act
             var result = await _controller.Get(request);
@@ -56,15 +60,18 @@ namespace NEWSHORE_AIR_TEST.Tests.Controllers
             // Assert
             Assert.IsInstanceOf<OkObjectResult>(result);
             var okResult = result as OkObjectResult;
-            Assert.AreEqual(expectedMessage, okResult.Value);
+            Assert.AreEqual(StatusCodes.Status200OK, okResult.StatusCode);
+            Assert.IsInstanceOf<ResponseBase<string>>(okResult.Value);
+            var responseBase = okResult.Value as ResponseBase<string>;
+            Assert.AreEqual("Su consulta no puede ser procesada", responseBase.Data);
         }
 
         [Test]
-        public async Task Get_ExceptionThrown_ReturnsBadRequest()
+        public async Task Get_ReturnsBadRequestResult_WhenExceptionIsThrown()
         {
             // Arrange
             var request = new RouteRequest();
-            _queryRouteMock.Setup(x => x.GetRoute(It.IsAny<RouteRequest>())).ThrowsAsync(new Exception());
+            _queryRouteMock.Setup(x => x.GetRoute(It.IsAny<RouteRequest>())).Throws(new Exception());
 
             // Act
             var result = await _controller.Get(request);
@@ -72,7 +79,10 @@ namespace NEWSHORE_AIR_TEST.Tests.Controllers
             // Assert
             Assert.IsInstanceOf<BadRequestObjectResult>(result);
             var badRequestResult = result as BadRequestObjectResult;
-            Assert.AreEqual("Su consulta no puede ser procesada", badRequestResult.Value);
+            Assert.AreEqual(StatusCodes.Status400BadRequest, badRequestResult.StatusCode);
+            Assert.IsInstanceOf<ResponseBase<string>>(badRequestResult.Value);
+            var responseBase = badRequestResult.Value as ResponseBase<string>;
+            Assert.AreEqual("Su consulta no puede ser procesada", responseBase.Data);
         }
     }
 }

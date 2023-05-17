@@ -10,3 +10,5 @@ C:\Users\SoporteIT\source\repos\NEWSHORE_AIR_WEB\NEWSHORE_AIR_BUSINESS\obj\Debug
 C:\Users\SoporteIT\source\repos\NEWSHORE_AIR_WEB\NEWSHORE_AIR_BUSINESS\obj\Debug\net6.0\refint\NEWSHORE_AIR_BUSINESS.dll
 C:\Users\SoporteIT\source\repos\NEWSHORE_AIR_WEB\NEWSHORE_AIR_BUSINESS\obj\Debug\net6.0\NEWSHORE_AIR_BUSINESS.pdb
 C:\Users\SoporteIT\source\repos\NEWSHORE_AIR_WEB\NEWSHORE_AIR_BUSINESS\obj\Debug\net6.0\ref\NEWSHORE_AIR_BUSINESS.dll
+C:\Users\SoporteIT\source\repos\NEWSHORE_AIR_WEB\NEWSHORE_AIR_BUSINESS\bin\Debug\net6.0\NEWSHORE_AIR_BUSINESS.runtimeconfig.json
+C:\Users\SoporteIT\source\repos\NEWSHORE_AIR_WEB\NEWSHORE_AIR_BUSINESS\obj\Debug\net6.0\NEWSHORE_AIR_BUSINESS.genruntimeconfig.cache
