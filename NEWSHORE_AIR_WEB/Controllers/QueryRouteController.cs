@@ -38,13 +38,11 @@ namespace NEWSHORE_AIR_WEB.Controllers
             }
             catch (MyCustomException ex)
             {
-                // Manejar la excepción personalizada
                 return BadRequest(ex.Message);
             }
             catch (Exception ex)
             {
-                return BadRequest(new ResponseBase<string>() { StatusCode = 200, Data = "Su consulta no puede ser procesada" });
-                throw;
+                return BadRequest(new ResponseBase<string>() { StatusCode = 500, Data = "Su consulta no puede ser procesada" });
             }
             
         }

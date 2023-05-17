@@ -22,6 +22,8 @@ jobs:
         run: dotnet restore NEWSHORE_AIR_WEB/NEWSHORE_AIR_WEB.csproj
       - name: Build
         run: dotnet build NEWSHORE_AIR_WEB/NEWSHORE_AIR_WEB.csproj --configuration Release --no-restore
+      - name: restore nuget
+        run: dotnet restore -s https://api.nuget.org/v3/index.json
       - name: Test
         run: dotnet test NEWSHORE_AIR_TEST/NEWSHORE_AIR_TEST.csproj --no-restore
       
