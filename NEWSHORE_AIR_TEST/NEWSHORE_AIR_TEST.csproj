@@ -21,7 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\NEWSHORE_AIR_BUSINESS\NEWSHORE_AIR_BUSINESS.csproj" />
     <ProjectReference Include="..\NEWSHORE_AIR_DATAACCESS\NEWSHORE_AIR_DATAACCESS.csproj" />
-    <ProjectReference Include="..\NEWSHORE_AIR_WEB\NEWSHORE_AIR_API.csproj" />
+    <ProjectReference Include="..\NEWSHORE_AIR_WEB\NEWSHORE_AIR_WEB.csproj" />
   </ItemGroup>
 
 </Project>

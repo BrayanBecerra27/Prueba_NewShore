@@ -205,8 +205,8 @@
               "C:\\Users\\SoporteIT\\source\\repos\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_DATAACCESS\\NEWSHORE_AIR_DATAACCESS.csproj": {
                 "projectPath": "C:\\Users\\SoporteIT\\source\\repos\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_DATAACCESS\\NEWSHORE_AIR_DATAACCESS.csproj"
               },
-              "C:\\Users\\SoporteIT\\source\\repos\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_API.csproj": {
-                "projectPath": "C:\\Users\\SoporteIT\\source\\repos\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_API.csproj"
+              "C:\\Users\\SoporteIT\\source\\repos\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_WEB.csproj": {
+                "projectPath": "C:\\Users\\SoporteIT\\source\\repos\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_WEB.csproj"
               }
             }
           }
@@ -266,12 +266,12 @@
         }
       }
     },
-    "C:\\Users\\SoporteIT\\source\\repos\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_API.csproj": {
+    "C:\\Users\\SoporteIT\\source\\repos\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_WEB.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\SoporteIT\\source\\repos\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_API.csproj",
-        "projectName": "NEWSHORE_AIR_API",
-        "projectPath": "C:\\Users\\SoporteIT\\source\\repos\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_API.csproj",
+        "projectUniqueName": "C:\\Users\\SoporteIT\\source\\repos\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_WEB.csproj",
+        "projectName": "NEWSHORE_AIR_WEB",
+        "projectPath": "C:\\Users\\SoporteIT\\source\\repos\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_WEB.csproj",
         "packagesPath": "C:\\Users\\SoporteIT\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\SoporteIT\\source\\repos\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_WEB\\obj\\",
         "projectStyle": "PackageReference",

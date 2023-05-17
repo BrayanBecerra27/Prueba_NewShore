@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wSoZcEPVgSCE64Xt9I+/Cs6zfaI4/dDoI1+pOUQ0vDAirBTNGpKOA57PNIL8+/1mgFASk3o3XkUfLTKcUo5RFQ==",
+  "dgSpecHash": "vmsAAbXM5l23B7Mw0JY6elVZB/vgjzj2Jv7ovgAt9SlJgdYmS5e17aUF8IM1oRs4/4Q/h9O8oi9Rf506zN2Kwg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\SoporteIT\\source\\repos\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_API.csproj",
+  "projectFilePath": "C:\\Users\\SoporteIT\\source\\repos\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_WEB.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\SoporteIT\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\SoporteIT\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",

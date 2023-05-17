@@ -1333,27 +1333,6 @@
           }
         }
       },
-      "NEWSHORE_AIR_API/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "Mapster": "7.3.0",
-          "Mapster.DependencyInjection": "1.0.0",
-          "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.18.1",
-          "NEWSHORE_AIR_BUSINESS": "1.0.0",
-          "NEWSHORE_AIR_DATAACCESS": "1.0.0",
-          "Swashbuckle.AspNetCore": "6.2.3"
-        },
-        "compile": {
-          "bin/placeholder/NEWSHORE_AIR_API.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/NEWSHORE_AIR_API.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
-      },
       "NEWSHORE_AIR_BUSINESS/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -1386,6 +1365,27 @@
         "runtime": {
           "bin/placeholder/NEWSHORE_AIR_DATAACCESS.dll": {}
         }
+      },
+      "NEWSHORE_AIR_WEB/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Mapster": "7.3.0",
+          "Mapster.DependencyInjection": "1.0.0",
+          "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.18.1",
+          "NEWSHORE_AIR_BUSINESS": "1.0.0",
+          "NEWSHORE_AIR_DATAACCESS": "1.0.0",
+          "Swashbuckle.AspNetCore": "6.2.3"
+        },
+        "compile": {
+          "bin/placeholder/NEWSHORE_AIR_WEB.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/NEWSHORE_AIR_WEB.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
@@ -3542,11 +3542,6 @@
         "version.txt"
       ]
     },
-    "NEWSHORE_AIR_API/1.0.0": {
-      "type": "project",
-      "path": "../NEWSHORE_AIR_WEB/NEWSHORE_AIR_API.csproj",
-      "msbuildProject": "../NEWSHORE_AIR_WEB/NEWSHORE_AIR_API.csproj"
-    },
     "NEWSHORE_AIR_BUSINESS/1.0.0": {
       "type": "project",
       "path": "../NEWSHORE_AIR_BUSINESS/NEWSHORE_AIR_BUSINESS.csproj",
@@ -3556,15 +3551,20 @@
       "type": "project",
       "path": "../NEWSHORE_AIR_DATAACCESS/NEWSHORE_AIR_DATAACCESS.csproj",
       "msbuildProject": "../NEWSHORE_AIR_DATAACCESS/NEWSHORE_AIR_DATAACCESS.csproj"
+    },
+    "NEWSHORE_AIR_WEB/1.0.0": {
+      "type": "project",
+      "path": "../NEWSHORE_AIR_WEB/NEWSHORE_AIR_WEB.csproj",
+      "msbuildProject": "../NEWSHORE_AIR_WEB/NEWSHORE_AIR_WEB.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "Microsoft.NET.Test.Sdk >= 17.5.0",
       "Moq >= 4.18.4",
-      "NEWSHORE_AIR_API >= 1.0.0",
       "NEWSHORE_AIR_BUSINESS >= 1.0.0",
       "NEWSHORE_AIR_DATAACCESS >= 1.0.0",
+      "NEWSHORE_AIR_WEB >= 1.0.0",
       "NUnit >= 3.13.3",
       "NUnit.Analyzers >= 3.6.1",
       "NUnit3TestAdapter >= 4.4.2",
@@ -3608,8 +3608,8 @@
             "C:\\Users\\SoporteIT\\source\\repos\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_DATAACCESS\\NEWSHORE_AIR_DATAACCESS.csproj": {
               "projectPath": "C:\\Users\\SoporteIT\\source\\repos\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_DATAACCESS\\NEWSHORE_AIR_DATAACCESS.csproj"
             },
-            "C:\\Users\\SoporteIT\\source\\repos\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_API.csproj": {
-              "projectPath": "C:\\Users\\SoporteIT\\source\\repos\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_API.csproj"
+            "C:\\Users\\SoporteIT\\source\\repos\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_WEB.csproj": {
+              "projectPath": "C:\\Users\\SoporteIT\\source\\repos\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_WEB\\NEWSHORE_AIR_WEB.csproj"
             }
           }
         }
