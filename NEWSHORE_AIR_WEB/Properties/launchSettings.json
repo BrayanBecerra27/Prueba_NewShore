@@ -15,7 +15,8 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ConnectionStrings:DatabaseConnectionString": "Server=tcp:newshoreair.database.windows.net,1433;Initial Catalog=db-newshore-air;Persist Security Info=False;User ID=brayanbecerra;Password=wU3sNn5V4GjYFaajDnUY;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30"
       }
     },
     "Docker": {

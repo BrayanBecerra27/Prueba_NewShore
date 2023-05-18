@@ -1,4 +1,4 @@
-﻿namespace NEWSHORE_AIR_API.ViewModel
+﻿namespace NEWSHORE_AIR_BUSINESS.ViewModel
 {
     public class MyCustomException : Exception
     {

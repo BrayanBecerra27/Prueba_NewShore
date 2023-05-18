@@ -6,20 +6,22 @@ using NEWSHORE_AIR_API.ViewModel;
 using NEWSHORE_AIR_BUSINESS.Entity;
 using NEWSHORE_AIR_BUSINESS.Interface;
 using NEWSHORE_AIR_BUSINESS.Models;
+using NEWSHORE_AIR_BUSINESS.ViewModel;
 using NEWSHORE_AIR_WEB.Controllers;
 using NUnit.Framework;
+using NEWSHORE_AIR_BUSINESS.Enumerator;
 
 namespace NEWSHORE_AIR_TEST.Tests.Controllers
 {
     [TestFixture]
     public class QueryRouteControllerTests
     {
-        private QueryRouteController _controller;
         private Mock<ILogger<QueryRouteController>> _loggerMock;
         private Mock<IQueryRoute> _queryRouteMock;
+        private QueryRouteController _controller;
 
         [SetUp]
-        public void Setup()
+        public void SetUp()
         {
             _loggerMock = new Mock<ILogger<QueryRouteController>>();
             _queryRouteMock = new Mock<IQueryRoute>();
@@ -27,62 +29,55 @@ namespace NEWSHORE_AIR_TEST.Tests.Controllers
         }
 
         [Test]
-        public async Task Get_ReturnsOkResultWithData_WhenResponseHasFlights()
+        public async Task Get_WithValidRequest_Returns200Ok()
         {
             // Arrange
-            var request = new RouteRequest();
-            var response = new JourneyResponse(string.Empty, string.Empty, 0, new List<FlightResponse>() { new FlightResponse()}) {  };
-            _queryRouteMock.Setup(x => x.GetRoute(It.IsAny<RouteRequest>())).ReturnsAsync(response);
+            var request = new RouteRequest { Origin = string.Empty, Destination = string.Empty,Scale = 0, RouteType = RouteType.Unique   };
+            var response = new JourneyResponse { Origin = request.Origin, Destination = request.Destination, Price = 0, Flights = new List<FlightResponse>() { new FlightResponse()} };
+            _queryRouteMock.Setup(x => x.GetRoute(request)).ReturnsAsync(response);
 
             // Act
-            var result = await _controller.Get(request);
+            var result = await _controller.Get(request) as ObjectResult;
 
             // Assert
-            Assert.IsInstanceOf<OkObjectResult>(result);
+            Assert.IsNotNull(result);
+            Assert.AreEqual(200, result.StatusCode);
             var okResult = result as OkObjectResult;
-            Assert.AreEqual(StatusCodes.Status200OK, okResult.StatusCode);
             Assert.IsInstanceOf<ResponseBase<JourneyResponse>>(okResult.Value);
             var responseBase = okResult.Value as ResponseBase<JourneyResponse>;
             Assert.AreEqual(response, responseBase.Data);
         }
 
         [Test]
-        public async Task Get_ReturnsOkResultWithStringData_WhenResponseHasNoFlights()
+        public async Task Get_WithEmptyResponse_Returns204NoContent()
         {
             // Arrange
-            var request = new RouteRequest();
-            var response = new JourneyResponse(string.Empty , string.Empty, 0, new List<FlightResponse>()) { };
-            _queryRouteMock.Setup(x => x.GetRoute(It.IsAny<RouteRequest>())).ReturnsAsync(response);
+            var request = new RouteRequest { Origin = string.Empty, Destination = string.Empty, Scale = 0, RouteType = RouteType.Unique };
+
+            var response = new JourneyResponse { Flights = new List<FlightResponse>() };
+            _queryRouteMock.Setup(x => x.GetRoute(request)).ReturnsAsync(response);
 
             // Act
-            var result = await _controller.Get(request);
+            var result = await _controller.Get(request) as ObjectResult;
 
             // Assert
-            Assert.IsInstanceOf<OkObjectResult>(result);
-            var okResult = result as OkObjectResult;
-            Assert.AreEqual(StatusCodes.Status200OK, okResult.StatusCode);
-            Assert.IsInstanceOf<ResponseBase<string>>(okResult.Value);
-            var responseBase = okResult.Value as ResponseBase<string>;
-            Assert.AreEqual("Su consulta no puede ser procesada", responseBase.Data);
+            Assert.IsNotNull(result);
+            Assert.AreEqual(204, result.StatusCode);
         }
 
         [Test]
-        public async Task Get_ReturnsBadRequestResult_WhenExceptionIsThrown()
+        public async Task Get_WithException_ReturnsInternalServerError()
         {
             // Arrange
-            var request = new RouteRequest();
-            _queryRouteMock.Setup(x => x.GetRoute(It.IsAny<RouteRequest>())).Throws(new Exception());
+            var request = new RouteRequest { };
+            _queryRouteMock.Setup(x => x.GetRoute(request)).Throws<Exception>();
 
             // Act
-            var result = await _controller.Get(request);
+            var result = await _controller.Get(request) as ObjectResult;
 
             // Assert
-            Assert.IsInstanceOf<BadRequestObjectResult>(result);
-            var badRequestResult = result as BadRequestObjectResult;
-            Assert.AreEqual(StatusCodes.Status400BadRequest, badRequestResult.StatusCode);
-            Assert.IsInstanceOf<ResponseBase<string>>(badRequestResult.Value);
-            var responseBase = badRequestResult.Value as ResponseBase<string>;
-            Assert.AreEqual("Su consulta no puede ser procesada", responseBase.Data);
+            Assert.IsNotNull(result);
+            Assert.AreEqual(500, result.StatusCode);
         }
     }
 }

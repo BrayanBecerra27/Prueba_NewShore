@@ -1,21 +1,13 @@
 ﻿using NEWSHORE_AIR_BUSINESS.Interface;
 using NEWSHORE_AIR_BUSINESS.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 using NEWSHORE_AIR_BUSINESS.Enumerator;
-using AutoMapper;
 
 namespace NEWSHORE_AIR_DATAACCESS.Implementation
 {
     public  class FlightService : IFlightService
     {
-        private readonly IJourneyRepository _iJourneyRepository;
-        public FlightService(IJourneyRepository journeyRepository) {
-            _iJourneyRepository = journeyRepository;
+        public FlightService() {
         }  
 
         public async Task<List<RouteResponse>> GetInformationRoutesAsync(RouteRequest request)
