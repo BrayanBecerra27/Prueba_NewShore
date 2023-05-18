@@ -13,8 +13,9 @@ namespace NEWSHORE_AIR_DATAACCESS.Implementation
 {
     public  class FlightService : IFlightService
     {
-        public FlightService() { 
-
+        private readonly IJourneyRepository _iJourneyRepository;
+        public FlightService(IJourneyRepository journeyRepository) {
+            _iJourneyRepository = journeyRepository;
         }  
 
         public async Task<List<RouteResponse>> GetInformationRoutesAsync(RouteRequest request)

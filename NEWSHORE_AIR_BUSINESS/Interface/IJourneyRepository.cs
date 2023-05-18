@@ -9,5 +9,7 @@ namespace NEWSHORE_AIR_BUSINESS.Interface
 {
     public interface IJourneyRepository : IGenericRepository<Journey>
     {
+        Task<Journey> GetJourneyFromDB(string origin, string destination, string routeType);
+        Task SaveJourney(Journey journey);
     }
 }

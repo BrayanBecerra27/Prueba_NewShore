@@ -15,6 +15,7 @@ namespace NEWSHORE_AIR_TEST.Tests.DataAccess
     {
         private IMapper _mapper;
         private Mock<IFlightService> _mockFlightService;
+        private Mock<IJourneyRepository> _mockJourneyRepository;
         private QueryRoute _queryRoute;
         [SetUp]
         public void Setup()
@@ -25,7 +26,7 @@ namespace NEWSHORE_AIR_TEST.Tests.DataAccess
             });
             _mapper = configuration.CreateMapper();
             _mockFlightService = new Mock<IFlightService>();
-            _queryRoute = new QueryRoute(_mapper, _mockFlightService.Object);
+            _queryRoute = new QueryRoute(_mapper, _mockFlightService.Object, _mockJourneyRepository.Object);
 
         }
 

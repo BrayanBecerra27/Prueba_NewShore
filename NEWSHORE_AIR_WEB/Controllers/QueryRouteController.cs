@@ -30,7 +30,7 @@ namespace NEWSHORE_AIR_WEB.Controllers
 
             try
             {
-                _logger.LogTrace("Gettings Routes");
+                
                 Journey response = await _iQueryRoute.GetRoute(request);
                 if (response.Flights.Count > 0)
                     return Ok(new ResponseBase<Journey>() { StatusCode = 200, Data = response });
@@ -39,10 +39,12 @@ namespace NEWSHORE_AIR_WEB.Controllers
             }
             catch (MyCustomException ex)
             {
+                _logger.LogError($"Error Gettings Routes: {ex}");
                 return BadRequest(ex.Message);
             }
             catch (Exception ex)
-            {
+            { 
+                _logger.LogError($"Error Gettings Routes: {ex}");
                 return BadRequest(new ResponseBase<string>() { StatusCode = 500, Data = "Su consulta no puede ser procesada" });
             }
             

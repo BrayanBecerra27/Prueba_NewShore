@@ -12,23 +12,35 @@ namespace NEWSHORE_AIR_DATAACCESS.Implementation
     {
         private readonly IMapper _mapper;
         private readonly IFlightService _iFlightService;
-        public QueryRoute(IMapper mapper, IFlightService flightService)
+        private readonly IJourneyRepository _iJourneyRepository;
+        public QueryRoute(IMapper mapper, IFlightService flightService, IJourneyRepository iJourneyRepository)
         {
             _mapper = mapper;
             _iFlightService = flightService;
+            _iJourneyRepository = iJourneyRepository;
         }
 
         public async Task<Journey> GetRoute(RouteRequest request)
         {
-            Journey journey = new Journey(request.Origin, request.Destination, 0, new List<Flight>());
-            List<RouteResponse> routeResponse = await _iFlightService.GetInformationRoutesAsync(request);
-            if (routeResponse.Count > 0)
+            Journey journey = await _iJourneyRepository.GetJourneyFromDB(request.Origin, request.Destination, request.RouteType.ToString());
+            if(journey.Flights.Count() >0)
+                return journey;
+            else
             {
-                journey.Flights =  CalculateRouteAsync(request, routeResponse);
-                journey.Price = journey.Flights.Sum(f => f.Price);
+                List<RouteResponse> routeResponse = await _iFlightService.GetInformationRoutesAsync(request);
+                if (routeResponse.Count > 0)
+                {
+                    journey.Flights = CalculateRouteAsync(request, routeResponse);
+                    journey.Price = journey.Flights.Sum(f => f.Price);
+                    if(journey.Flights.Count > 0)
+                    {
+                        journey.RouteType = request.RouteType.ToString(); 
+                        await _iJourneyRepository.SaveJourney(journey);
+                    }
+                       
+                }
+                return journey;
             }
-            return journey;
-            
         }
 
         private List<Flight> CalculateRouteAsync(RouteRequest request, List<RouteResponse> routeResponse)
