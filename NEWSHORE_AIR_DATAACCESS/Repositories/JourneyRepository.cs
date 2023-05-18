@@ -26,13 +26,15 @@ namespace NEWSHORE_AIR_DATAACCESS.Repositories
         public async Task< Journey> GetJourneyFromDB(string origin, string destination, string routeType)
         {
             Journey journey = await _context.Journeys.Where(s => s.Origin.Equals(origin) && s.Destination.Equals(destination) && s.RouteType.Equals(routeType)).FirstOrDefaultAsync() ?? new Journey(origin, destination, 0, new List<Flight>());
-            if(journey.JourneyId > 0) { 
-                journey.Flights = await _context.Flights.Where(s=>s.JourneyId == journey.JourneyId).ToListAsync() ?? new List<Flight>();
+            if(journey.JourneyId > 0) {
+                //journey.Flights = await _context.Flights.Where(s=>s.JourneyId == journey.JourneyId).ToListAsync() ?? new List<Flight>();
+                journey.Flights = await _iFlightRepository.GetFlightsByJourneyIdAsync(journey.JourneyId);
                 if (journey.Flights.Count > 0)
                 {
                     foreach (var item in journey.Flights)
                     {
-                        item.Transport = await _context.Transports.Where(s => s.TransportId == item.TransportId).FirstOrDefaultAsync() ?? new Transport(string.Empty, string.Empty);
+                        //item.Transport = await _context.Transports.Where(s => s.TransportId == item.TransportId).FirstOrDefaultAsync() ?? new Transport(string.Empty, string.Empty);
+                        item.Transport = await _iTransportRepository.GetByIdAsync(item.TransportId);    
                     }
                 }
             }
@@ -51,7 +53,6 @@ namespace NEWSHORE_AIR_DATAACCESS.Repositories
                     item.JourneyId = journey.JourneyId;
 
                 }
-
                 await _iFlightRepository.AddRangeAsync(journey.Flights);
             }
         }

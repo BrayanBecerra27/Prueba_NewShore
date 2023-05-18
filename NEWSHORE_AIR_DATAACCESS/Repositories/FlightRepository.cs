@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace NEWSHORE_AIR_DATAACCESS.Repositories
 {
@@ -15,6 +16,11 @@ namespace NEWSHORE_AIR_DATAACCESS.Repositories
         public FlightRepository(NewShoreDbContext context) : base(context)
         {
             _context = context;
+        }
+
+        public async Task<List<Flight>> GetFlightsByJourneyIdAsync(int journeyId)
+        {
+            return await _context.Flights.Where(s => s.JourneyId == journeyId).ToListAsync() ?? new List<Flight>();
         }
     }
 }

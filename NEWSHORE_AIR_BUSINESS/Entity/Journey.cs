@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace NEWSHORE_AIR_BUSINESS.Entity
@@ -18,8 +13,15 @@ namespace NEWSHORE_AIR_BUSINESS.Entity
             Destination = destination;
             Price = price;
             Flights = flights;
+            RouteType = string.Empty;
         }
-        public Journey() { }
+        public Journey() {
+            Origin = string.Empty;
+            Destination = string.Empty;
+            Price = 0;
+            Flights = new List<Flight> ();
+            RouteType = string.Empty;
+        }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]

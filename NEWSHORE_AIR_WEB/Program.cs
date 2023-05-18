@@ -8,6 +8,7 @@ using System.Globalization;
 using System.Text;
 using Serilog;
 using Serilog.Events;
+using NEWSHORE_AIR_BUSINESS.Implementation;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddEnvironmentVariables();
@@ -56,6 +57,7 @@ builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepositor
 builder.Services.AddScoped<IFlightRepository, FlightRepository>();
 builder.Services.AddScoped<IJourneyRepository, JourneyRepository>();
 builder.Services.AddScoped<ITransportRepository, TransportRepository>();
+builder.Services.AddScoped<ICalculateRouteInteractor, CalculateRouteInteractor>();
 //AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

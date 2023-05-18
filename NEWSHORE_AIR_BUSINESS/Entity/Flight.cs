@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace NEWSHORE_AIR_BUSINESS.Entity
@@ -42,8 +36,5 @@ namespace NEWSHORE_AIR_BUSINESS.Entity
         public int JourneyId { get; set; }
         [JsonIgnore]
         public int TransportId { get; set; }
-        [JsonIgnore]
-        [NotMapped]
-        public Journey Journeys { get; set; }
     }
 }

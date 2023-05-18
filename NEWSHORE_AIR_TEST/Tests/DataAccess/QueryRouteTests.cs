@@ -7,6 +7,7 @@ using NEWSHORE_AIR_BUSINESS.Mapper;
 using NEWSHORE_AIR_DATAACCESS.Implementation;
 using NEWSHORE_AIR_BUSINESS.Interface;
 using NUnit.Framework;
+using Microsoft.OpenApi.Any;
 
 namespace NEWSHORE_AIR_TEST.Tests.DataAccess
 {
@@ -16,23 +17,23 @@ namespace NEWSHORE_AIR_TEST.Tests.DataAccess
         private IMapper _mapper;
         private Mock<IFlightService> _mockFlightService;
         private Mock<IJourneyRepository> _mockJourneyRepository;
+        private Mock<ICalculateRouteInteractor> _mockCalculateRouteInteractor;
         private QueryRoute _queryRoute;
         [SetUp]
         public void Setup()
         {
-            // Configurar AutoMapper si es necesario
             var configuration = new MapperConfiguration(cfg => {
                 cfg.AddProfile<MappingFlight>();
             });
             _mapper = configuration.CreateMapper();
             _mockFlightService = new Mock<IFlightService>();
             _mockJourneyRepository = new Mock<IJourneyRepository>();
-            _queryRoute = new QueryRoute(_mapper, _mockFlightService.Object, _mockJourneyRepository.Object);
-
+            _mockCalculateRouteInteractor = new Mock<ICalculateRouteInteractor>();
+            _queryRoute = new QueryRoute(_mapper, _mockFlightService.Object, _mockJourneyRepository.Object, _mockCalculateRouteInteractor.Object);
         }
 
         [Test]
-        public async Task GetRoute_ReturnsJourneyWithinFlights_WhenRouteResponseNotEmpty()
+        public async Task GetRoute_ReturnsJourneyWithFlights_WhenRouteResponseNotEmpty()
         {
             // Arrange
             var request = new RouteRequest
@@ -49,17 +50,18 @@ namespace NEWSHORE_AIR_TEST.Tests.DataAccess
                 new RouteResponse { DepartureStation = "B", ArrivalStation = "C" },
                 new RouteResponse { DepartureStation = "C", ArrivalStation = "F" }
             };
-
-            var journeyDb = new Journey { Flights = new List<Flight>()};
+            var flights = new List<Flight>() { new Flight()};
+            var journeyDb = new Journey { Flights = flights};
+            
             _mockJourneyRepository.Setup(x => x.GetJourneyFromDB(request.Origin, request.Destination, request.RouteType.ToString())).ReturnsAsync(journeyDb);
             _mockFlightService.Setup(x => x.GetInformationRoutesAsync(request)).ReturnsAsync(routeResponse);
-
+            _mockCalculateRouteInteractor.Setup(x => x.CalculateRouteAsync(request, routeResponse)).ReturnsAsync(flights);
             // Act
             var journey = await _queryRoute.GetRoute(request);
 
             // Assert
             Assert.NotNull(journey);
-            Assert.AreEqual(0, journey.Flights.Count);
+            Assert.AreEqual(1, journey.Flights.Count);
             Assert.AreEqual(0, journey.Price);
         }
 
@@ -76,10 +78,12 @@ namespace NEWSHORE_AIR_TEST.Tests.DataAccess
             };
 
             var routeResponse = new List<RouteResponse>();
-            var journeyDb = new Journey { Flights = new List<Flight>() };
+
+            var flights = new List<Flight>() { };
+            var journeyDb = new Journey {Origin = request.Origin, Destination = request.Destination, Price = 0, Flights = new List<Flight>() };
             _mockJourneyRepository.Setup(x => x.GetJourneyFromDB(request.Origin, request.Destination, request.RouteType.ToString())).ReturnsAsync(journeyDb);
             _mockFlightService.Setup(x => x.GetInformationRoutesAsync(request)).ReturnsAsync(routeResponse);
-
+            _mockCalculateRouteInteractor.Setup(x => x.CalculateRouteAsync(request, routeResponse)).ReturnsAsync(flights);
             // Act
             var journey = await _queryRoute.GetRoute(request);
 
@@ -112,7 +116,14 @@ namespace NEWSHORE_AIR_TEST.Tests.DataAccess
                 new RouteResponse { DepartureStation = "E", ArrivalStation = "F" }
             };
 
-            var journeyDb = new Journey { Flights = new List<Flight>() };
+            var flights = new List<Flight>() {  
+                new Flight { Destination = "A", Origin = "B" },
+                new Flight { Destination = "B", Origin = "C" },
+                new Flight { Destination = "C", Origin = "F" }
+            
+            };
+
+            var journeyDb = new Journey { Origin = request.Origin, Destination = request.Destination, Price = 0, Flights = flights };
             _mockJourneyRepository.Setup(x => x.GetJourneyFromDB(request.Origin, request.Destination, request.RouteType.ToString())).ReturnsAsync(journeyDb);
 
             _mockFlightService.Setup(x => x.GetInformationRoutesAsync(request)).ReturnsAsync(routeResponse);
@@ -122,7 +133,7 @@ namespace NEWSHORE_AIR_TEST.Tests.DataAccess
 
             // Assert
             Assert.NotNull(journey);
-            Assert.AreEqual(0, journey.Flights.Count);
+            Assert.AreEqual(3, journey.Flights.Count);
             Assert.AreEqual(0, journey.Price);
         }
         [Test]
@@ -144,11 +155,18 @@ namespace NEWSHORE_AIR_TEST.Tests.DataAccess
                 new RouteResponse { DepartureStation = "C", ArrivalStation = "F" }
             };
 
-            var journeyDb = new Journey { Flights = new List<Flight>() };
+            var flights = new List<Flight>
+            {
+                new Flight { Destination = "A", Origin = "B" },
+                new Flight { Destination = "B", Origin = "C" },
+                new Flight { Destination = "C", Origin = "F" }
+            };
+            var journeyDb = new Journey { Origin = request.Origin, Destination = request.Destination, Price = 0, Flights = flights };
             _mockJourneyRepository.Setup(x => x.GetJourneyFromDB(request.Origin, request.Destination, request.RouteType.ToString())).ReturnsAsync(journeyDb);
 
             _mockFlightService.Setup(x => x.GetInformationRoutesAsync(request)).ReturnsAsync(routeResponse);
 
+            _mockCalculateRouteInteractor.Setup(x => x.CalculateRouteAsync(request, routeResponse)).ReturnsAsync(flights);
             // Act
             var journey = await _queryRoute.GetRoute(request);
 
@@ -176,10 +194,14 @@ namespace NEWSHORE_AIR_TEST.Tests.DataAccess
                 new RouteResponse { DepartureStation = "C", ArrivalStation = "D" }
             };
 
-            var journeyDb = new Journey { Flights = new List<Flight>() };
+            var flights = new List<Flight>();
+
+            var journeyDb = new Journey { Origin = request.Origin, Destination  = request.Destination, Price = 0, Flights = new List<Flight>() };
             _mockJourneyRepository.Setup(x => x.GetJourneyFromDB(request.Origin, request.Destination, request.RouteType.ToString())).ReturnsAsync(journeyDb);
 
             _mockFlightService.Setup(x => x.GetInformationRoutesAsync(request)).ReturnsAsync(routeResponse);
+
+            _mockCalculateRouteInteractor.Setup(x => x.CalculateRouteAsync(request, routeResponse)).ReturnsAsync(flights);
 
             // Act
             var journey = await _queryRoute.GetRoute(request);

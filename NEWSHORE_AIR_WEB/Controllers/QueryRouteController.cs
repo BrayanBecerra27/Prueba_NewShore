@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using NEWSHORE_AIR_BUSINESS.Interface;
 using NEWSHORE_AIR_BUSINESS.Models;
-using NEWSHORE_AIR_BUSINESS.Entity;
-using System.Threading.Tasks;
 using NEWSHORE_AIR_API.ViewModel;
 
 namespace NEWSHORE_AIR_WEB.Controllers
@@ -31,9 +29,9 @@ namespace NEWSHORE_AIR_WEB.Controllers
             try
             {
                 
-                Journey response = await _iQueryRoute.GetRoute(request);
+                JourneyResponse response = await _iQueryRoute.GetRoute(request);
                 if (response.Flights.Count > 0)
-                    return Ok(new ResponseBase<Journey>() { StatusCode = 200, Data = response });
+                    return Ok(new ResponseBase<JourneyResponse>() { StatusCode = 200, Data = response });
                 else
                     return Ok(new ResponseBase<string>() { StatusCode = 204, Data = "Su consulta no puede ser procesada" });
             }

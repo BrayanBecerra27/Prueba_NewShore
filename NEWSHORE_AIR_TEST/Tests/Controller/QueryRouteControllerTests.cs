@@ -31,7 +31,7 @@ namespace NEWSHORE_AIR_TEST.Tests.Controllers
         {
             // Arrange
             var request = new RouteRequest();
-            var response = new Journey(string.Empty, string.Empty, 0, new List<Flight>() { new Flight()}) {  };
+            var response = new JourneyResponse(string.Empty, string.Empty, 0, new List<FlightResponse>() { new FlightResponse()}) {  };
             _queryRouteMock.Setup(x => x.GetRoute(It.IsAny<RouteRequest>())).ReturnsAsync(response);
 
             // Act
@@ -41,8 +41,8 @@ namespace NEWSHORE_AIR_TEST.Tests.Controllers
             Assert.IsInstanceOf<OkObjectResult>(result);
             var okResult = result as OkObjectResult;
             Assert.AreEqual(StatusCodes.Status200OK, okResult.StatusCode);
-            Assert.IsInstanceOf<ResponseBase<Journey>>(okResult.Value);
-            var responseBase = okResult.Value as ResponseBase<Journey>;
+            Assert.IsInstanceOf<ResponseBase<JourneyResponse>>(okResult.Value);
+            var responseBase = okResult.Value as ResponseBase<JourneyResponse>;
             Assert.AreEqual(response, responseBase.Data);
         }
 
@@ -51,7 +51,7 @@ namespace NEWSHORE_AIR_TEST.Tests.Controllers
         {
             // Arrange
             var request = new RouteRequest();
-            var response = new Journey(string.Empty , string.Empty, 0, new List<Flight>()) { };
+            var response = new JourneyResponse(string.Empty , string.Empty, 0, new List<FlightResponse>()) { };
             _queryRouteMock.Setup(x => x.GetRoute(It.IsAny<RouteRequest>())).ReturnsAsync(response);
 
             // Act
