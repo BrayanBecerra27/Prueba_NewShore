@@ -30,11 +30,12 @@ namespace NEWSHORE_AIR_WEB.Controllers
 
             try
             {
+                _logger.LogTrace("Gettings Routes");
                 Journey response = await _iQueryRoute.GetRoute(request);
                 if (response.Flights.Count > 0)
                     return Ok(new ResponseBase<Journey>() { StatusCode = 200, Data = response });
                 else
-                    return Ok(new ResponseBase<string>() { StatusCode = 200, Data = "Su consulta no puede ser procesada" });
+                    return Ok(new ResponseBase<string>() { StatusCode = 204, Data = "Su consulta no puede ser procesada" });
             }
             catch (MyCustomException ex)
             {

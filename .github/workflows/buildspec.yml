@@ -44,8 +44,8 @@ jobs:
 
       - name: Build, tag, and push docker image to Amazon ECR        
         run: |
-          docker build -f NEWSHORE_AIR_WEB/Dockerfile -t public.ecr.aws/y6a2t9t0/newshoreapi .
-          docker push public.ecr.aws/y6a2t9t0/newshoreapi
+          docker build -f NEWSHORE_AIR_WEB/Dockerfile -t 387415601974.dkr.ecr.us-east-1.amazonaws.com/newshoreapi .
+          docker push 387415601974.dkr.ecr.us-east-1.amazonaws.com/newshoreapi
           
     
     

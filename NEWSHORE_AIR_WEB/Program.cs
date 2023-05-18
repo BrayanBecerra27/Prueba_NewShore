@@ -4,9 +4,29 @@ using NEWSHORE_AIR_DATAACCESS.Context;
 using NEWSHORE_AIR_BUSINESS.Interface;
 using NEWSHORE_AIR_DATAACCESS.Implementation;
 using NEWSHORE_AIR_DATAACCESS.Repositories;
+using System.Globalization;
+using System.Text;
+using Serilog;
+using Serilog.Events;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddEnvironmentVariables();
+
+//Create Loggger and store in amazon S3
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.AmazonS3(
+        $"logBackend-{DateTime.Now.Year}-{DateTime.Now.Month}-{DateTime.Now.Day}.txt",
+        "newshore-air-logs",
+        Amazon.RegionEndpoint.USEast1,
+        builder.Configuration.GetSection("awsCredentials:awsAccessKeyId").Value,
+        builder.Configuration.GetSection("awsCredentials:awsSecretAccessKey").Value,
+        restrictedToMinimumLevel: LogEventLevel.Error,
+        outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}{Exception}",
+        new CultureInfo("es-CO"),
+        levelSwitch: null,
+        rollingInterval: Serilog.Sinks.AmazonS3.RollingInterval.Day,
+        encoding: Encoding.Unicode)
+    .CreateLogger();
 // Add services to the container.
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
@@ -38,6 +58,8 @@ builder.Services.AddScoped<IJourneyRepository, JourneyRepository>();
 builder.Services.AddScoped<ITransportRepository, TransportRepository>();
 //AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Host.UseSerilog();
 
 var app = builder.Build();
 
